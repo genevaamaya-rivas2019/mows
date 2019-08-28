@@ -1,10 +1,76 @@
 <html>
 <head>
-  <title>mows</title>
+  <title>Geneva Mows</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+ 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 </head>
+<style>
+  #container {
+		  width: 900px;
+		  background: pink;
+		  margin: 0 auto;
+		  -webkit-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.20);
+		  -o-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
+		  -ms-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
+		  border-radius: 20px;
+		  -moz-border-radius: 20px;
+		  -webkit-border-radius: 20px;
+		  -o-border-radius: 20px;
+		  -ms-border-radius: 20px; }
+
+    h1{
+      text-align: center;
+    }
+</style>
 <body>
-  <h1>MQTT</h1>
-  <p>My MQTT Web App</p>
+  <h1>My MQTT Web App</h1>
+
+  <div id="container">
+    <h1>Broker</h1>
+    <center>
+      <div>
+        <label for="Address">Address: </label><br>
+        <input name="address" id="inpAdd" value="ws://broker.hivemq.com:8000/mqtt">
+      </div><br>
+
+      <button id="btn-connect" class="btn btn-success save-btn">Connect</button>
+      <button id="btn-disconnect" class="btn btn-success save-btn">Disconnect</button><br><br>
+
+      <div>
+          <label for="Status">Status: </label><br>
+          <input name="status" id="inpStatus" value=" " disabled="">
+      </div><br><br>
+    </center>
+  </div>
+  <div id="container">
+    <h1>Publish</h1>
+    <center>
+        <div>
+          <label for="pubTopic">Topic: </label><br>
+          <input name="pubTopic" id="pubTopic" value="mqtt/demo">
+        </div><br>
+
+        <div>
+            <label for="pubPayload">Payload: </label><br>
+            <input name="pubPayload" id="pubPayload" value="Geneva Rivas">
+        </div><br>
+  
+        <button id="btn-publish" class="btn btn-success save-btn">Publish</button><br><br>
+  
+      </center>
+  </div>
+  <div id="container">
+    <h1>Subscribe</h1>
+    <center>
+        <div>
+          <label for="subTopic">Topic: </label><br>
+          <input name="subTopic" id="subTopic" value="mqtt/demo">
+        </div><br>
+
+        <button id="btn-subscribe" class="btn btn-success save-btn">Subscribe</button>
+        <button id="btn-unsubscribe" class="btn btn-success save-btn">Unsubscribe</button><br><br>
+    </center>
+  </div>
 </body>
 <script src="scripts/browserMqtt.js"></script>
 <script src="scripts/controller.js"></script>
