@@ -3,54 +3,54 @@ var btnConnect = document.getElementById("btn-connect");
 var btnDisconnect = document.getElementById("btn-disconnect");
 
 //disconnect
-btnDisconnect.addEventListener("click", function(e){
+btnDisconnect.addEventListener("click", function (e) {
   e.preventDefault();
   let status = document.getElementById("inpStatus");
   status.value = "Disconnected!"
+  client.end();
 })
 
 //connect
-btnConnect.addEventListener("click", function(e){
+btnConnect.addEventListener("click", function (e) {
   e.preventDefault();
 
   let status = document.getElementById("inpStatus");
   console.log("working Connect Button");
-  client = mqtt.connect("ws://broker.hivemq.com:8000/mqtt") // connect to broker
-  client.subscribe("mqtt/demo") //subscribe sa topic
+  client = mqtt.connect(document.getElementById("inpAddress").value) // connect to broker
 
-  client.on("connect", function(){
+  client.on("connect", function () {
     console.log("Successfully connected");
     status.value = "Connected!"
   })
 
   client.on("message", function (topic, payload) { //triggered and display the message
-    console.log([topic, payload].join(": "));
-    //client.end();//equals disconnect
+    let final = topic.toString().slice(5);
+    console.log([final, payload].join(": "));
+    //topic = mqtt/gen  >>> topic = gen
+    $(".table tbody").append("<tr><td>" + final + "</td><td>" + payload + "</td><td>" + moment().format('MMMM Do YYYY, h:mm:ss a') + "</td></tr>");
   })
-
-  client.publish("mqtt/demo", "hello world!")
 })
 
 var payload1 = document.getElementById("pubPayload").value;
 //publish
-document.getElementById("btn-publish").addEventListener("click", function(e){
+document.getElementById("btn-publish").addEventListener("click", function (e) {
   e.preventDefault();
-  client.on("message", function (topic, payload) { //triggered and display the message
-    console.log([topic, payload].join(": "));
-    //client.end();//equals disconnect
-  })
-  client.publish("mqtt/demo", payload1)
+  var topic = "mqtt/" + $("#pubTopic").val();
+  var payload = $("#pubPayload").val();
+  client.publish(topic, payload)
 })
 
-document.getElementById("btn-subscribe").addEventListener("click",function(e){
+document.getElementById("btn-subscribe").addEventListener("click", function (e) {
   e.preventDefault();
-  client.on("message", function (topic, payload) { //triggered and display the message
-    console.log([topic, payload].join(": "));
-    //client.end();//equals disconnect
-  })
-  client.subscribe("mqtt/demo")
+  let topic = $("#subTopic").val();
+  client.subscribe("mqtt/" + topic);
 })
 
+document.getElementById("btn-unsubscribe").addEventListener("click", function (e) {
+  e.preventDefault();
+  let topic = $("#subTopic").val();
+  client.unsubscribe("mqtt/" + topic);
+})
 
 
 // // advance functionalities
