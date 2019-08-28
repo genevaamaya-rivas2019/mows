@@ -27,11 +27,11 @@ btnConnect.addEventListener("click", function (e) {
     let final = topic.toString().slice(5);
     console.log([final, payload].join(": "));
     //topic = mqtt/gen  >>> topic = gen
-    $(".table tbody").append("<tr><td>" + final + "</td><td>" + payload + "</td><td>" + moment().format('MMMM Do YYYY, h:mm:ss a') + "</td></tr>");
+    $("table tbody").append("<tr><td>" + final + "</td><td>" + payload + "</td><td>" + moment().format('MMMM Do YYYY, h:mm:ss a') + "</td></tr>");
   })
 })
 
-var payload1 = document.getElementById("pubPayload").value;
+
 //publish
 document.getElementById("btn-publish").addEventListener("click", function (e) {
   e.preventDefault();

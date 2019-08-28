@@ -5,11 +5,16 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
 </head>
 <style>
   #container {
-    width: 900px;
+    width: 500px;
     background: pink;
     margin: 0 auto;
     -webkit-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.20);
@@ -29,15 +34,54 @@
   thead th {
     height: 50px;
     width: 150px;
+    text-align: center;
+  }
+
+  tbody tr{
+    height: 50px;
+    width: 50px;
+    text-align: center;
   }
 
   table {
-    border: solid black 3px;
+    width: 500px;
+    background: white;
+    margin: 0 auto;
+    -webkit-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.20);
+    -o-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
+    -ms-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -o-border-radius: 20px;
+    -ms-border-radius: 20px;
   }
 
   .input {
     width: 50%;
   }
+  
+  .left{
+    position:relative;
+    left: -300px;
+  }
+
+  .right{
+    position:relative;
+    right: -300px;
+    top: -280px
+  }
+
+#fixed_header tbody{
+  display:block;
+  overflow:auto;
+  height:200px;
+  width:100%;
+  text-align: center;
+}
+#fixed_header thead tr{
+  display:block;
+}
 </style>
 
 <body>
@@ -58,19 +102,20 @@
         <label for="Status">Status: </label><br>
         <input name="status" class="form-control" id="inpStatus" value=" " disabled="">
       </div><br><br>
-      <table class="table">
-        <thead>
+      <h2>Incoming Messages</h2>
+      <table class="table" id="fixed_header">
+        <thead class="thead-dark  ">
           <th>Topic</th>
           <th>Payload</th>
           <th>Time Stamp</th>
         </thead>
         <tbody>
-
+    
         </tbody>
       </table>
     </center>
   </div>
-  <div id="container">
+  <div id="container" class="left">
     <h1>Publish</h1>
     <center>
       <div class="input">
@@ -86,7 +131,7 @@
       <button id="btn-publish" class="btn btn-success save-btn">Publish</button><br><br>
     </center>
   </div>
-  <div id="container">
+  <div id="container" class="right">
     <h1>Subscribe</h1>
     <center>
       <div class="input">
