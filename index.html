@@ -44,12 +44,11 @@
   }
 
   table {
-    width: 500px;
-    background: white;
+    background-color: antiquewhite;
     margin: 0 auto;
     -webkit-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.20);
     -o-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
-    -ms-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
+    -ms-box-shadow: 0px 15px 16.83px 0.17px rgba(10, 10, 10, 0.05);
     border-radius: 20px;
     -moz-border-radius: 20px;
     -webkit-border-radius: 20px;
@@ -61,6 +60,12 @@
     width: 50%;
   }
   
+  table tbody{
+    width: 100px;
+  }
+  table thead{
+    background-color: aqua;
+  }
   .left{
     position:relative;
     left: -300px;
@@ -71,18 +76,6 @@
     right: -300px;
     top: -280px
   }
-
-#fixed_header tbody{
-  display:block;
-  overflow:auto;
-  height:200px;
-  width:100%;
-  text-align: center;
-}
-#fixed_header thead tr{
-  display:block;
-}
-
 </style>
 
 <body>
@@ -103,9 +96,12 @@
         <label for="Status">Status: </label><br>
         <input name="status" class="form-control" id="inpStatus" value=" " disabled="">
       </div><br><br>
-      <h2>Incoming Messages</h2>
-      <table class="table" id="fixed_header">
-        <thead class="thead-dark">
+    </center>
+  </div>
+  <div id="container">
+    <h1>Incoming Messages</h1>
+      <table class="table">
+        <thead>
           <th>Topic</th>
           <th>Payload</th>
           <th>Time Stamp</th>
@@ -114,7 +110,6 @@
     
         </tbody>
       </table>
-    </center>
   </div>
   <div id="container" class="left">
     <h1>Publish</h1>
