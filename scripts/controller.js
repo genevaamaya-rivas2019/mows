@@ -40,12 +40,14 @@ document.getElementById("btn-publish").addEventListener("click", function (e) {
   client.publish(topic, payload)
 })
 
+//subscribe
 document.getElementById("btn-subscribe").addEventListener("click", function (e) {
   e.preventDefault();
   let topic = $("#subTopic").val();
   client.subscribe("mqtt/" + topic);
 })
 
+//unsubscribe
 document.getElementById("btn-unsubscribe").addEventListener("click", function (e) {
   e.preventDefault();
   let topic = $("#subTopic").val();
