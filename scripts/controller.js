@@ -35,10 +35,12 @@ btnConnect.addEventListener("click", function (e) {
 //publish
 document.getElementById("btn-publish").addEventListener("click", function (e) {
   e.preventDefault();
-  var topic = "mqtt/" + $("#pubTopic").val();
-  var payload = $("#pubPayload").val();
+  let topic = "mqtt/" + $("#pubTopic").val();
+  let payload = $("#pubPayload").val();
+  let final = topic.toString().slice(5);
+  console.log([final, payload].join(": "));
   client.publish(topic, payload);
-  $("#publishBody").append("<tr><td>" + topic + "</td><td>" + payload + "</td><td>" + moment().format('MMMM Do YYYY, h:mm:ss a') + "</td></tr>");
+  $("#publishBody").append("<tr><td>" + final + "</td><td>" + payload + "</td><td>" + moment().format('MMMM Do YYYY, h:mm:ss a') + "</td></tr>");
 
 })
 
