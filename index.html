@@ -27,6 +27,21 @@
     -ms-border-radius: 20px;
   }
 
+  #containerMess {
+    width: 500px;
+    background: pink;
+    margin: 0 auto;
+    -webkit-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.20);
+    -o-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
+    -ms-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -o-border-radius: 20px;
+    -ms-border-radius: 20px;
+    display: none;
+  }
+
   h1 {
     text-align: center;
   }
@@ -37,7 +52,7 @@
     text-align: center;
   }
 
-  tbody tr{
+  tbody tr {
     height: 50px;
     width: 50px;
     text-align: center;
@@ -59,20 +74,22 @@
   .input {
     width: 50%;
   }
-  
-  table tbody{
+
+  table tbody {
     width: 100px;
   }
-  table thead{
+
+  table thead {
     background-color: aqua;
   }
-  .left{
-    position:relative;
+
+  .left {
+    position: relative;
     left: -300px;
   }
 
-  .right{
-    position:relative;
+  .right {
+    position: relative;
     right: -300px;
     top: -390px
   }
@@ -96,20 +113,24 @@
         <label for="Status">Status: </label><br>
         <input name="status" class="form-control" id="inpStatus" value=" " disabled="">
       </div><br><br>
+
+      <button id="btn-messages" class="btn btn-success save-btn">Messages</button>
+      <button id="btn-hide" class="btn btn-success save-btn">Hide Messages</button>
+
     </center>
   </div>
-  <div id="container">
+  <div id="containerMess">
     <h1>Incoming Messages</h1>
-      <table class="table">
-        <thead>
-          <th>Topic</th>
-          <th>Payload</th>
-          <th>Time Stamp</th>
-        </thead>
-        <tbody id="messageBody">
-    
-        </tbody>
-      </table>
+    <table class="table">
+      <thead>
+        <th>Topic</th>
+        <th>Payload</th>
+        <th>Time Stamp</th>
+      </thead>
+      <tbody id="messageBody">
+
+      </tbody>
+    </table>
   </div>
   <div id="container" class="left">
     <h1>Publish</h1>
@@ -127,40 +148,40 @@
       <button id="btn-publish" class="btn btn-success save-btn">Publish</button><br><br>
     </center>
 
-    <h1>Incoming Messages</h1>
-      <table class="tableP">
-        <thead>
-          <th>Topic</th>
-          <th>Payload</th>
-          <th>Time Stamp</th>
-        </thead>
-        <tbody id="publishBody">
-    
-        </tbody>
-      </table>
+    <h1>History</h1>
+    <table class="tableP">
+      <thead>
+        <th>Topic</th>
+        <th>Payload</th>
+        <th>Time Stamp</th>
+      </thead>
+      <tbody id="publishBody">
+
+      </tbody>
+    </table>
   </div>
   <div id="container" class="right">
     <h1>Subscribe</h1>
     <center>
       <div class="input">
         <label for="subTopic">Topic: </label><br>
-        <input name="subTopic" class="form-control" id="subTopic">
+        <input name="subsTopic" class="form-control" id="subTopic">
       </div><br>
 
       <button id="btn-subscribe" class="btn btn-success save-btn">Subscribe</button>
       <button id="btn-unsubscribe" class="btn btn-success save-btn">Unsubscribe</button><br><br>
     </center>
 
-    <h1>Incoming Messages</h1>
-      <table class="tableS">
-        <thead>
-          <th>Topic</th>
-          <th>Time Stamp</th>
-        </thead>
-        <tbody id="subscribeBody">
-    
-        </tbody>
-      </table>
+    <h1>History</h1>
+    <table class="tableS">
+      <thead>
+        <th>Topic</th>
+        <th>Time Stamp</th>
+      </thead>
+      <tbody id="subscribeBody">
+
+      </tbody>
+    </table>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
 </body>

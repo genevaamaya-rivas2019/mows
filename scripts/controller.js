@@ -24,40 +24,46 @@ btnConnect.addEventListener("click", function (e) {
   })
 
   client.on("message", function (topic, payload) { //triggered and display the message
-    let final = topic.toString().slice(5);
-    console.log([final, payload].join(": "));
+    console.log([topic, payload].join(": "));
     //topic = mqtt/gen  >>> topic = gen
-    $("#messageBody").append("<tr><td>" + final + "</td><td>" + payload + "</td><td>" + moment().format('MMMM Do YYYY, h:mm:ss a') + "</td></tr>");
+    $("#messageBody").append("<tr><td>" + topic + "</td><td>" + payload + "</td><td>" + moment().format('MMMM Do YYYY, h:mm:ss a') + "</td></tr>");
   })
 })
 
+//hide and show the messages
+document.getElementById("btn-messages").addEventListener("click", function (e) {
+  e.preventDefault();
+  $("#containerMess").show();
+})
+document.getElementById("btn-hide").addEventListener("click", function (e) {
+  e.preventDefault();
+  $("#containerMess").hide();
+})
 
 //publish
 document.getElementById("btn-publish").addEventListener("click", function (e) {
   e.preventDefault();
-  let topic = "mqtt/" + $("#pubTopic").val();
-  let payload = $("#pubPayload").val();
-  let final = topic.toString().slice(5);
-  console.log([final, payload].join(": "));
+  let topic = $("input[name=topic]").val();
+  let payload = $("input[name=payload]").val();
   client.publish(topic, payload);
-  $("#publishBody").append("<tr><td>" + final + "</td><td>" + payload + "</td><td>" + moment().format('MMMM Do YYYY, h:mm:ss a') + "</td></tr>");
+  $("#publishBody").append("<tr><td>" + topic + "</td><td>" + payload + "</td><td>" + moment().format('MMMM Do YYYY, h:mm:ss a') + "</td></tr>");
 
 })
 
 //subscribe
 document.getElementById("btn-subscribe").addEventListener("click", function (e) {
   e.preventDefault();
-  let topics = $("#subTopic").val();
-  client.subscribe("mqtt/" + topics);
-  $("#subscribeBody").append("<tr><td>" + topics + "</td><td>" + moment().format('MMMM Do YYYY, h:mm:ss a') + "</td></tr>");
+  let topic = $("input[name=subsTopic]").val();
+  client.subscribe(topic);
+  $("#subscribeBody").append("<tr><td>" + topic + "</td><td>" + moment().format('MMMM Do YYYY, h:mm:ss a') + "</td></tr>");
 
 })
 
 //unsubscribe
 document.getElementById("btn-unsubscribe").addEventListener("click", function (e) {
   e.preventDefault();
-  let topic = $("#subTopic").val();
-  client.unsubscribe("mqtt/" + topic);
+  let topic = $("input[name=subsTopic]").val();
+  client.unsubscribe(topic);
 })
 
 
