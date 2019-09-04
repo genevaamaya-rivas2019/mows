@@ -27,7 +27,7 @@ btnConnect.addEventListener("click", function (e) {
     let final = topic.toString().slice(5);
     console.log([final, payload].join(": "));
     //topic = mqtt/gen  >>> topic = gen
-    $("table tbody").append("<tr><td>" + final + "</td><td>" + payload + "</td><td>" + moment().format('MMMM Do YYYY, h:mm:ss a') + "</td></tr>");
+    $("#messageBody").append("<tr><td>" + final + "</td><td>" + payload + "</td><td>" + moment().format('MMMM Do YYYY, h:mm:ss a') + "</td></tr>");
   })
 })
 
@@ -37,14 +37,18 @@ document.getElementById("btn-publish").addEventListener("click", function (e) {
   e.preventDefault();
   var topic = "mqtt/" + $("#pubTopic").val();
   var payload = $("#pubPayload").val();
-  client.publish(topic, payload)
+  client.publish(topic, payload);
+  $("#publishBody").append("<tr><td>" + topic + "</td><td>" + payload + "</td><td>" + moment().format('MMMM Do YYYY, h:mm:ss a') + "</td></tr>");
+
 })
 
 //subscribe
 document.getElementById("btn-subscribe").addEventListener("click", function (e) {
   e.preventDefault();
-  let topic = $("#subTopic").val();
-  client.subscribe("mqtt/" + topic);
+  let topics = $("#subTopic").val();
+  client.subscribe("mqtt/" + topics);
+  $("#subscribeBody").append("<tr><td>" + topics + "</td><td>" + moment().format('MMMM Do YYYY, h:mm:ss a') + "</td></tr>");
+
 })
 
 //unsubscribe

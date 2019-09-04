@@ -74,7 +74,7 @@
   .right{
     position:relative;
     right: -300px;
-    top: -280px
+    top: -390px
   }
 </style>
 
@@ -106,7 +106,7 @@
           <th>Payload</th>
           <th>Time Stamp</th>
         </thead>
-        <tbody>
+        <tbody id="messageBody">
     
         </tbody>
       </table>
@@ -126,6 +126,18 @@
 
       <button id="btn-publish" class="btn btn-success save-btn">Publish</button><br><br>
     </center>
+
+    <h1>Incoming Messages</h1>
+      <table class="tableP">
+        <thead>
+          <th>Topic</th>
+          <th>Payload</th>
+          <th>Time Stamp</th>
+        </thead>
+        <tbody id="publishBody">
+    
+        </tbody>
+      </table>
   </div>
   <div id="container" class="right">
     <h1>Subscribe</h1>
@@ -138,6 +150,17 @@
       <button id="btn-subscribe" class="btn btn-success save-btn">Subscribe</button>
       <button id="btn-unsubscribe" class="btn btn-success save-btn">Unsubscribe</button><br><br>
     </center>
+
+    <h1>Incoming Messages</h1>
+      <table class="tableS">
+        <thead>
+          <th>Topic</th>
+          <th>Time Stamp</th>
+        </thead>
+        <tbody id="subscribeBody">
+    
+        </tbody>
+      </table>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
 </body>
